@@ -4226,7 +4226,7 @@ body.dark .gen-mode {
               <input type="email" class="form-control-loak" id="emailInput" placeholder="E-mail" required>
 
 
-              <input type="tel" class="form-control-loak" id="phoneInput" placeholder="Telefone / WhatsApp" required>
+              <input type="tel" class="form-control-loak" id="phoneInput" placeholder="Telefone / WhatsApp" required inputmode="numeric" maxlength="15">
 
 
               <select class="form-control-loak" id="serviceSelect" required>
@@ -6275,6 +6275,75 @@ body.dark .gen-mode {
       });
   }
 })();
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  /* Fecha o menu mobile automaticamente após clicar em um link */
+  const mainMenu = document.getElementById("mainMenu");
+
+  if (mainMenu) {
+    mainMenu.querySelectorAll('a[href^="#"]').forEach(function (link) {
+      link.addEventListener("click", function () {
+        if (window.innerWidth < 992 && mainMenu.classList.contains("show")) {
+          if (window.bootstrap && bootstrap.Collapse) {
+            const collapse = bootstrap.Collapse.getOrCreateInstance(mainMenu, { toggle: false });
+            collapse.hide();
+          } else {
+            mainMenu.classList.remove("show");
+            const toggler = document.querySelector('[data-bs-target="#mainMenu"]');
+            if (toggler) toggler.setAttribute("aria-expanded", "false");
+          }
+        }
+      });
+    });
+  }
+
+  /* Máscara brasileira para campo de WhatsApp/telefone */
+  const phoneInput =
+    document.querySelector('#whatsappInput') ||
+    document.querySelector('input[type="tel"]') ||
+    document.querySelector('input[id*="whats" i], input[name*="whats" i], input[placeholder*="whats" i], input[id*="telefone" i], input[name*="telefone" i]');
+
+  if (phoneInput) {
+    phoneInput.setAttribute("inputmode", "numeric");
+    phoneInput.setAttribute("maxlength", "15");
+
+    function formatBrazilPhone(value) {
+      let digits = value.replace(/\D/g, "").slice(0, 11);
+
+      if (digits.length <= 2) {
+        return digits ? "(" + digits : "";
+      }
+
+      if (digits.length <= 6) {
+        return "(" + digits.slice(0, 2) + ") " + digits.slice(2);
+      }
+
+      if (digits.length <= 10) {
+        return "(" + digits.slice(0, 2) + ") " +
+          digits.slice(2, 6) + "-" + digits.slice(6);
+      }
+
+      return "(" + digits.slice(0, 2) + ") " +
+        digits.slice(2, 7) + "-" + digits.slice(7, 11);
+    }
+
+    phoneInput.addEventListener("input", function () {
+      this.value = formatBrazilPhone(this.value);
+    });
+
+    phoneInput.addEventListener("paste", function () {
+      const el = this;
+      setTimeout(function () {
+        el.value = formatBrazilPhone(el.value);
+      }, 0);
+    });
+  }
+
+});
 </script>
 
 </body>
