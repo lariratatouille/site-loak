@@ -3169,6 +3169,25 @@ body.dark .gen-mode {
   }
 }
 
+
+/* ===== PARTICLES MOBILE EXPERIENCE ===== */
+@media (pointer: coarse) {
+  .generative-canvas {
+    touch-action: pan-y;
+  }
+
+  .gen-instruction {
+    display: block !important;
+    opacity: .78;
+  }
+
+  .generative-shell {
+    box-shadow:
+      0 24px 60px rgba(15,56,95,.14),
+      0 0 0 1px rgba(0,168,255,.025);
+  }
+}
+
 </style>
 
 </head>
@@ -3346,8 +3365,8 @@ body.dark .gen-mode {
               </div>
 
               <div class="gen-instruction">
-                move o mouse → distorce<br>
-                clique → explode
+                mouse → distorce<br>
+                toque/arraste → reage
               </div>
 
             </div>
@@ -5950,6 +5969,10 @@ body.dark .gen-mode {
     radius: 92
   };
 
+  const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
+  let touching = false;
+  let lastTouchTime = 0;
+
   function isDark() {
     return document.body.classList.contains("dark");
   }
@@ -6012,19 +6035,24 @@ body.dark .gen-mode {
 
     const targets = createTargets();
 
+    const coarse = window.matchMedia("(pointer: coarse)").matches;
+
     particles = targets.map(function (t) {
-      const angle = Math.random() * Math.PI * 2;
-      const dist = Math.max(width,height) * (.25 + Math.random() * .65);
+      // No celular, a logo nasce perto da posição final:
+      // evita aquela "explosão/pulo" forte ao abrir a página.
+      const spreadX = coarse ? 44 : 82;
+      const spreadY = coarse ? 34 : 60;
 
       return {
-        x: width / 2 + Math.cos(angle) * dist,
-        y: height / 2 + Math.sin(angle) * dist,
+        x: t.x + (Math.random() - .5) * spreadX,
+        y: t.y + (Math.random() - .5) * spreadY,
         tx: t.x,
         ty: t.y,
-        vx: 0,
-        vy: 0,
+        vx: (Math.random() - .5) * .35,
+        vy: (Math.random() - .5) * .35,
         size: 1 + Math.random() * 1.7,
-        phase: Math.random() * Math.PI * 2
+        phase: Math.random() * Math.PI * 2,
+        wave: Math.random() * Math.PI * 2
       };
     });
   }
@@ -6046,28 +6074,46 @@ body.dark .gen-mode {
 
     const t = time * .001;
 
-    particles.forEach(function (p) {
-      let dx = p.tx - p.x;
-      let dy = p.ty - p.y;
+    // No celular, quando ninguém está tocando, um ponto invisível
+    // percorre a logo bem devagar para ela continuar "viva".
+    if (coarsePointer && !touching && !reduceMotion) {
+      mouse.x = width * .5 + Math.cos(t * .62) * width * .28;
+      mouse.y = height * .5 + Math.sin(t * .86) * height * .19;
+      mouse.radius = Math.max(92, Math.min(width, height) * .24);
+    }
 
-      p.vx += dx * .028;
-      p.vy += dy * .028;
+    particles.forEach(function (p) {
+      // Micro-ondulação permanente no mobile sem destruir a leitura de LOAK.
+      const ambientX = coarsePointer && !reduceMotion
+        ? Math.sin(t * 1.05 + p.wave) * 1.8
+        : 0;
+      const ambientY = coarsePointer && !reduceMotion
+        ? Math.cos(t * .92 + p.wave) * 1.5
+        : 0;
+
+      let dx = (p.tx + ambientX) - p.x;
+      let dy = (p.ty + ambientY) - p.y;
+
+      // Retorno mais suave: para de "pular" quando monta a palavra.
+      p.vx += dx * (coarsePointer ? .021 : .028);
+      p.vy += dy * (coarsePointer ? .021 : .028);
 
       const mdx = p.x - mouse.x;
       const mdy = p.y - mouse.y;
       const md = Math.hypot(mdx,mdy);
 
       if (md < mouse.radius) {
-        const force = (1 - md / mouse.radius) * 2.2;
+        const base = touching ? 3.0 : (coarsePointer ? .55 : 2.2);
+        const force = (1 - md / mouse.radius) * base;
         const len = md || 1;
         p.vx += (mdx / len) * force;
         p.vy += (mdy / len) * force;
       }
 
-      p.vx *= .83;
-      p.vy *= .83;
+      p.vx *= coarsePointer ? .865 : .83;
+      p.vy *= coarsePointer ? .865 : .83;
 
-      if (!reduceMotion) {
+      if (!reduceMotion && !coarsePointer) {
         p.vx += Math.cos(t * .8 + p.phase) * .006;
         p.vy += Math.sin(t * .7 + p.phase) * .006;
       }
@@ -6105,18 +6151,84 @@ body.dark .gen-mode {
     requestAnimationFrame(draw);
   }
 
-  shell.addEventListener("pointermove", function (e) {
+  function setInteractionPoint(clientX, clientY, strong) {
     const rect = shell.getBoundingClientRect();
-    mouse.x = e.clientX - rect.left;
-    mouse.y = e.clientY - rect.top;
+    mouse.x = clientX - rect.left;
+    mouse.y = clientY - rect.top;
+    mouse.radius = strong
+      ? Math.max(115, Math.min(width, height) * .30)
+      : Math.max(92, Math.min(width, height) * .22);
+  }
+
+  shell.addEventListener("pointermove", function (e) {
+    setInteractionPoint(e.clientX, e.clientY, e.pointerType !== "mouse");
+    if (e.pointerType !== "mouse") {
+      touching = true;
+      lastTouchTime = performance.now();
+    }
   });
 
-  shell.addEventListener("pointerleave", function () {
-    mouse.x = -9999;
-    mouse.y = -9999;
+  shell.addEventListener("pointerdown", function (e) {
+    setInteractionPoint(e.clientX, e.clientY, true);
+
+    if (e.pointerType !== "mouse") {
+      touching = true;
+      lastTouchTime = performance.now();
+
+      // No celular o toque cria uma onda local, em vez de explodir a logo inteira.
+      particles.forEach(function (p) {
+        const dx = p.x - mouse.x;
+        const dy = p.y - mouse.y;
+        const dist = Math.hypot(dx, dy);
+        const radius = mouse.radius * 1.25;
+
+        if (dist < radius) {
+          const len = dist || 1;
+          const power = (1 - dist / radius) * 5.2;
+          p.vx += (dx / len) * power;
+          p.vy += (dy / len) * power;
+        }
+      });
+    }
   });
 
-  shell.addEventListener("click", explode);
+  shell.addEventListener("pointerup", function (e) {
+    if (e.pointerType !== "mouse") {
+      touching = false;
+      lastTouchTime = performance.now();
+    }
+  });
+
+  shell.addEventListener("pointercancel", function () {
+    touching = false;
+  });
+
+  shell.addEventListener("pointerleave", function (e) {
+    if (e.pointerType === "mouse") {
+      mouse.x = -9999;
+      mouse.y = -9999;
+    }
+    touching = false;
+  });
+
+  // Desktop mantém a explosão no clique; mobile usa a onda local acima.
+  shell.addEventListener("click", function (e) {
+    if (!coarsePointer) explode();
+  });
+
+  // iOS/Safari: melhora a resposta durante toque/arrasto sem bloquear o scroll.
+  shell.addEventListener("touchmove", function (e) {
+    if (!e.touches || !e.touches[0]) return;
+    const touch = e.touches[0];
+    touching = true;
+    lastTouchTime = performance.now();
+    setInteractionPoint(touch.clientX, touch.clientY, true);
+  }, { passive: true });
+
+  shell.addEventListener("touchend", function () {
+    touching = false;
+    lastTouchTime = performance.now();
+  }, { passive: true });
 
   let resizeTimer;
   window.addEventListener("resize", function () {
