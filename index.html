@@ -2892,70 +2892,282 @@ body.dark .gen-mode {
 }
 
 
-/* LOAK BUILD MODE */
-:root{--build-progress:0%}
-.build-progress{position:fixed;left:18px;bottom:18px;z-index:1400;width:190px;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:color-mix(in srgb,var(--card) 90%,transparent);backdrop-filter:blur(12px);box-shadow:0 10px 30px rgba(15,56,95,.10);font-family:"Courier New",monospace;font-size:9px;letter-spacing:1px;color:var(--text-soft);pointer-events:none}
-.build-progress strong{display:flex;justify-content:space-between;gap:10px;color:var(--text);font-size:9px;font-weight:900}
-.build-track{height:3px;margin-top:8px;overflow:hidden;border-radius:99px;background:var(--border)}
-.build-track span{display:block;width:var(--build-progress);height:100%;background:var(--primary);box-shadow:0 0 12px rgba(0,168,255,.55);transition:width .12s linear}
+/* ======================================================
+   FINAL REFINEMENT — LOAK
+====================================================== */
 
-.hero{min-height:100vh;padding:130px 0 80px;display:flex;align-items:center;position:relative;overflow:hidden;background:var(--bg);isolation:isolate}
-.hero::before{content:"BUILD";position:absolute;right:-4vw;bottom:-4vw;font-size:clamp(180px,28vw,500px);line-height:.72;font-weight:900;letter-spacing:-.09em;color:transparent;-webkit-text-stroke:1px rgba(23,105,170,.055);pointer-events:none;user-select:none;z-index:0}
-.hero .container{position:relative;z-index:2}
-.hero-copy{position:relative;z-index:4;max-width:590px}
-.hero-index{display:inline-flex;align-items:center;gap:11px;margin-bottom:22px;color:var(--primary);font-family:"Courier New",monospace;font-size:11px;font-weight:900;letter-spacing:1.8px;text-transform:uppercase}
-.hero-index::before{content:"01";width:34px;height:34px;display:grid;place-items:center;border-radius:50%;border:1px solid var(--primary);font-size:9px;letter-spacing:0}
-.hero h1{margin:0 0 26px;max-width:650px;font-size:clamp(50px,6vw,82px);line-height:.92;letter-spacing:-4px;font-weight:900;color:var(--text)}
-.hero h1 span{display:block}
-.hero h1 .soft-word{color:var(--text-soft);font-weight:400}
-.hero h1 .accent-word{color:var(--primary)}
-.hero-description{max-width:535px;margin-bottom:31px;font-size:16px;line-height:1.72;color:var(--text-soft)}
-.hero-buttons{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:0}
-
-.build-stage{position:relative;width:min(100%,690px);min-height:570px;margin-left:auto;overflow:hidden;border:1px solid var(--border);border-radius:18px;background:var(--bg-soft);box-shadow:0 34px 90px rgba(15,56,95,.14)}
-.build-stage::before{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(rgba(23,105,170,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,105,170,.06) 1px,transparent 1px);background-size:28px 28px}
-.final-interface{position:absolute;inset:0;padding:26px;z-index:1}
-.final-topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:44px}
-.final-brand{display:flex;align-items:center;gap:9px;color:var(--text);font-weight:900;letter-spacing:-.5px}
-.final-brand-mark{width:34px;height:34px;display:grid;place-items:center;border-radius:8px;background:var(--primary);color:#fff;font-size:11px;box-shadow:0 10px 24px rgba(23,105,170,.18)}
-.final-status{font-family:"Courier New",monospace;font-size:9px;letter-spacing:1px;color:var(--text-soft)} .final-status b{color:var(--primary)}
-.final-main{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:stretch}
-.final-copy{padding:24px 4px}
-.final-copy small{display:block;margin-bottom:13px;color:var(--primary);font-family:"Courier New",monospace;font-size:9px;font-weight:900;letter-spacing:1.6px;text-transform:uppercase}
-.final-copy h3{margin:0 0 15px;max-width:330px;font-size:34px;line-height:1.02;letter-spacing:-2px}
-.final-copy p{max-width:340px;font-size:13px;line-height:1.65}
-.final-btn{display:inline-flex;align-items:center;gap:8px;margin-top:8px;padding:11px 14px;border-radius:8px;background:var(--primary);color:#fff;font-size:11px;font-weight:900}
-.final-visual{position:relative;min-height:350px;overflow:hidden;border-radius:14px;background:radial-gradient(circle at 65% 35%,rgba(0,168,255,.20),transparent 34%),#081827;border:1px solid #183651}
-.final-visual-grid{position:absolute;inset:0;opacity:.28;background:linear-gradient(rgba(89,183,255,.20) 1px,transparent 1px),linear-gradient(90deg,rgba(89,183,255,.20) 1px,transparent 1px);background-size:30px 30px}
-.final-core{position:absolute;left:50%;top:49%;transform:translate(-50%,-50%);width:124px;height:124px;border-radius:28px;display:grid;place-items:center;background:linear-gradient(145deg,#0b5c9d,#00a8ff);color:#fff;font-size:25px;font-weight:900;letter-spacing:-1px;box-shadow:0 24px 55px rgba(0,0,0,.32),0 0 60px rgba(0,168,255,.20);animation:coreFloat 4s ease-in-out infinite}
-.final-node{position:absolute;min-width:78px;padding:9px 10px;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);backdrop-filter:blur(9px);color:#c5d9e8;font-family:"Courier New",monospace;font-size:8px;letter-spacing:.8px}
-.fn1{left:18px;top:25px}.fn2{right:18px;top:62px}.fn3{left:24px;bottom:33px}.fn4{right:22px;bottom:28px}
-.final-line{position:absolute;height:1px;background:linear-gradient(90deg,rgba(89,183,255,.05),rgba(89,183,255,.75),rgba(89,183,255,.05));transform-origin:left center;opacity:.8}
-.fl1{left:21%;top:34%;width:31%;transform:rotate(18deg)}.fl2{left:52%;top:38%;width:30%;transform:rotate(-20deg)}.fl3{left:22%;top:68%;width:30%;transform:rotate(-14deg)}.fl4{left:50%;top:65%;width:32%;transform:rotate(18deg)}
-.final-footer{position:absolute;left:26px;right:26px;bottom:22px;display:flex;justify-content:space-between;gap:12px;font-family:"Courier New",monospace;font-size:8px;letter-spacing:.8px;color:var(--text-soft)}
-
-.blueprint-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:5;touch-action:none;cursor:crosshair}
-.blueprint-ui{position:absolute;inset:0;z-index:6;pointer-events:none}
-.blueprint-label{position:absolute;left:18px;top:17px;padding:6px 8px;border:1px solid rgba(89,183,255,.28);background:rgba(5,26,50,.74);color:#81c9ff;font-family:"Courier New",monospace;font-size:8px;letter-spacing:1px;text-transform:uppercase}
-.blueprint-help{position:absolute;right:18px;bottom:17px;text-align:right;color:#6ca9d3;font-family:"Courier New",monospace;font-size:8px;line-height:1.6;letter-spacing:.7px}
-
-@keyframes coreFloat{0%,100%{transform:translate(-50%,-50%) translateY(0)}50%{transform:translate(-50%,-50%) translateY(-7px)}}
-
-.stack-section{position:relative;overflow:hidden}
-.stack-section::before{content:"ARCHITECT / BUILD / TEST / SHIP / ";position:absolute;left:-2%;top:50%;transform:translateY(-50%);white-space:nowrap;font-size:92px;line-height:1;font-weight:900;letter-spacing:-5px;color:rgba(23,105,170,.035);pointer-events:none}
-.service-card,.process-card,.plan-card{border-radius:9px!important}
-.service-card{border-top:3px solid var(--primary)}
-.process-card{border-left:3px solid var(--primary)}
-.developer-card{border-radius:9px}
-.section-heading{letter-spacing:-2px}
-.section-center::before{content:"BUILD / SECTION";display:block;margin-bottom:10px;color:var(--primary);font-family:"Courier New",monospace;font-size:8px;letter-spacing:1.5px;opacity:.55}
-
-@media(max-width:991px){.build-stage{margin:55px auto 0;min-height:540px}.build-progress{left:12px;bottom:12px;width:160px}}
-@media(max-width:576px){
-.hero{padding:124px 0 72px}.hero h1{font-size:46px;letter-spacing:-2.8px}.hero-description{font-size:15px}.hero-buttons{flex-direction:column}.button-main,.button-secondary{width:100%}
-.build-stage{min-height:470px;border-radius:14px}.final-interface{padding:18px}.final-main{grid-template-columns:1fr;gap:8px}.final-copy{padding:12px 0 0}.final-copy h3{font-size:27px}.final-copy p{font-size:11px}.final-visual{min-height:230px}.final-footer{display:none}.final-topbar{margin-bottom:16px}.blueprint-help{font-size:7px}.build-progress{width:145px;padding:8px 9px}
+/* Header tools always visible */
+.header .container {
+  gap: 10px;
 }
-@media(prefers-reduced-motion:reduce){.final-core{animation:none!important}}
+
+.header-tools-fixed {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+.header-tools-fixed .tool-button {
+  display: inline-flex !important;
+}
+
+.navbar-toggler {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border) !important;
+  border-radius: 12px;
+  background: var(--card) !important;
+  position: relative;
+}
+
+.navbar-toggler-icon {
+  width: 21px;
+  height: 14px;
+  background-image: none !important;
+  position: relative;
+  border-top: 2px solid var(--text);
+  border-bottom: 2px solid var(--text);
+}
+
+.navbar-toggler-icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 5px;
+  width: 21px;
+  border-top: 2px solid var(--text);
+}
+
+/* Cleaner hero */
+.hero h1 {
+  max-width: 650px;
+  font-size: clamp(49px, 6vw, 82px);
+  line-height: .95;
+  letter-spacing: -4px;
+}
+
+.hero h1 .accent {
+  color: var(--primary);
+  font-weight: 900;
+}
+
+.hero-description {
+  max-width: 575px;
+}
+
+/* Generative area = brand object instead of generic card */
+.generative-shell {
+  min-height: 550px;
+  border-radius: 28px 8px 28px 8px;
+  overflow: hidden;
+  transform: translateZ(0);
+}
+
+.generative-shell::after {
+  content: "LOAK";
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  transform: translate(-50%,-50%);
+  font-size: clamp(92px, 10vw, 170px);
+  font-weight: 900;
+  letter-spacing: -.08em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(89,183,255,.06);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* real services */
+.services-real .service-card {
+  min-height: 300px;
+  padding: 34px 30px 30px;
+  border-radius: 10px !important;
+  border-top: 3px solid var(--primary);
+}
+
+.service-number {
+  position: absolute;
+  right: 24px;
+  top: 22px;
+  color: rgba(23,105,170,.16);
+  font-family: "Courier New", monospace;
+  font-size: 34px;
+  font-weight: 900;
+}
+
+.services-real .service-card h4 {
+  font-size: 23px;
+}
+
+.stack-items {
+  gap: 14px;
+}
+
+.stack-item {
+  min-width: 115px;
+  text-align: center;
+}
+
+/* Mobile */
+@media(max-width: 991px) {
+  .navbar-brand {
+    margin-right: auto !important;
+  }
+
+  .header-tools-fixed {
+    margin-left: auto;
+    margin-right: 2px;
+  }
+
+  .header-tools-fixed .tool-button {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+  }
+
+  .header-tools-fixed .language-button {
+    width: auto;
+    min-width: 48px;
+    padding: 0 9px;
+  }
+
+  .navbar-toggler {
+    display: inline-flex;
+  }
+
+  .navbar-collapse {
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    top: calc(100% + 6px);
+    margin-top: 0 !important;
+    box-shadow: 0 18px 45px rgba(0,0,0,.14);
+  }
+
+  .contact-header {
+    display: inline-flex;
+    margin-top: 12px;
+  }
+
+  .generative-shell {
+    width: 100%;
+    max-width: 680px;
+    margin: 48px auto 0;
+  }
+}
+
+@media(max-width: 576px) {
+  .header .container {
+    padding-left: 14px;
+    padding-right: 14px;
+    gap: 6px;
+  }
+
+  .navbar-brand {
+    width: 126px !important;
+    height: 72px !important;
+  }
+
+  .navbar-brand .site-logo {
+    width: 118px !important;
+    max-width: 118px !important;
+    height: auto !important;
+  }
+
+  .header-tools-fixed {
+    gap: 5px;
+    margin-right: 0;
+  }
+
+  .header-tools-fixed .tool-button {
+    width: 37px;
+    height: 37px;
+    min-width: 37px;
+    border-radius: 10px;
+  }
+
+  .header-tools-fixed .language-button {
+    width: 43px;
+    min-width: 43px;
+    padding: 0;
+    font-size: 12px;
+  }
+
+  .navbar-toggler {
+    width: 39px;
+    height: 39px;
+    border-radius: 10px;
+  }
+
+  .hero {
+    padding-top: 120px;
+  }
+
+  .hero h1 {
+    font-size: 46px;
+    letter-spacing: -2.6px;
+    line-height: .96;
+  }
+
+  .hero-description {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .generative-shell {
+    width: calc(100% - 4px);
+    min-height: 390px;
+    margin: 42px auto 0;
+    border-radius: 24px 7px 24px 7px;
+  }
+
+  .gen-topline {
+    left: 14px;
+    top: 14px;
+    font-size: 8px;
+  }
+
+  .gen-mode {
+    right: 12px;
+    top: 12px;
+    font-size: 7px;
+    padding: 5px 7px;
+  }
+
+  .gen-caption {
+    left: 14px;
+    bottom: 14px;
+    font-size: 8px;
+  }
+
+  .gen-instruction {
+    display: block;
+    right: 14px;
+    bottom: 14px;
+    font-size: 7px;
+  }
+
+  .generative-shell::after {
+    font-size: 92px;
+    opacity: .6;
+  }
+
+  .stack-item {
+    min-width: 100px;
+    flex: 1 1 42%;
+  }
+
+  .services-real .service-card {
+    min-height: auto;
+  }
+}
 
 </style>
 
@@ -2963,13 +3175,9 @@ body.dark .gen-mode {
 
 
 <body>
+<div class="loak-cursor" id="loakCursor"></div>
 
-<div class="build-progress" id="buildProgress">
-  <strong><span data-i18n="buildProgressLabel">BUILD MODE</span><span id="buildPercent">0%</span></strong>
-  <div class="build-track"><span></span></div>
-</div>
-
-<!-- =========================================================
+  <!-- =========================================================
      PRELOADER
 ========================================================= -->
 
@@ -3001,7 +3209,21 @@ body.dark .gen-mode {
 
         </a>
 
-        <button
+        <div class="header-tools header-tools-fixed"><button
+              class="tool-button language-button"
+              id="languageButton"
+              type="button"
+              title="Trocar idioma"
+            >
+              PT
+            </button><button
+              class="tool-button"
+              id="themeButton"
+              type="button"
+              title="Alterar tema"
+            >
+              <i id="themeIcon" class="lni lni-night"></i>
+            </button></div><button
           class="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
@@ -3011,9 +3233,7 @@ body.dark .gen-mode {
           aria-label="Abrir menu"
         >
           <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="mainMenu">
+        </button><div class="collapse navbar-collapse" id="mainMenu">
 
           <ul class="navbar-nav ms-auto align-items-lg-center">
 
@@ -3041,39 +3261,13 @@ body.dark .gen-mode {
               <a class="nav-link" href="#contact" data-i18n="navContact">Contato</a>
             </li>
 
-          </ul>
-
-          <div class="header-tools">
-
-            <button
-              class="tool-button language-button"
-              id="languageButton"
-              type="button"
-              title="Trocar idioma"
-            >
-              PT
-            </button>
-
-            <button
-              class="tool-button"
-              id="themeButton"
-              type="button"
-              title="Alterar tema"
-            >
-              <i id="themeIcon" class="lni lni-night"></i>
-            </button>
-
-            <a
+          </ul><a
               href="#contact"
               class="contact-header"
               data-i18n="headerContact"
             >
               Fale conosco
-            </a>
-
-          </div>
-
-        </div>
+            </a></div>
 
       </div>
 
@@ -3088,71 +3282,85 @@ body.dark .gen-mode {
 ========================================================= -->
 
   <section id="home" class="hero">
-<div class="container">
-<div class="row align-items-center g-5">
 
-<div class="col-lg-6 hero-copy">
-  <div class="hero-index" data-i18n="buildHeroIndex">LOAK / BUILD MODE</div>
-  <h1>
-    <span data-i18n="buildTitle1">NÓS NÃO</span>
-    <span class="soft-word" data-i18n="buildTitle2">FAZEMOS SÓ</span>
-    <span class="accent-word" data-i18n="buildTitle3">SITES.</span>
-  </h1>
-  <p class="hero-description" data-i18n="buildHeroDescription">
-    Construímos sistemas digitais pensados para funcionar, crescer e transformar processos reais.
-  </p>
-  <div class="hero-buttons">
-    <a href="#services" class="button-main magnetic"><span data-i18n="buildExplore">Explorar soluções</span> <i class="lni lni-arrow-right"></i></a>
-    <a href="#contact" class="button-secondary magnetic"><i class="lni lni-comments"></i> <span data-i18n="buildStartProject">Começar um projeto</span></a>
-  </div>
-</div>
+    <div class="container">
 
-<div class="col-lg-6">
-  <div class="build-stage" id="buildStage">
-    <div class="final-interface">
-      <div class="final-topbar">
-        <div class="final-brand"><span class="final-brand-mark">L</span> <span data-i18n="buildSystem">LOAK SYSTEM</span></div>
-        <div class="final-status"><span data-i18n="buildStatusLabel">status:</span> <b data-i18n="buildReady">ready</b></div>
-      </div>
+      <div class="row align-items-center g-5">
 
-      <div class="final-main">
-        <div class="final-copy">
-          <small data-i18n="buildArchitecture">digital architecture</small>
-          <h3 data-i18n="buildFromStructure">Da estrutura ao produto.</h3>
-          <p data-i18n="buildSystemText">Estratégia, interface e desenvolvimento trabalhando como um único sistema.</p>
-          <span class="final-btn"><span data-i18n="buildSolution">build_solution()</span> <i class="lni lni-arrow-right"></i></span>
+        <div class="col-lg-6 hero-copy">
+
+          <div class="hero-index" data-i18n="heroBadge">
+            Tecnologia que transforma negócios
+          </div>
+
+          <h1>
+            <span class="hero-line" data-i18n="heroTitle1">Criamos soluções</span>
+            <span class="hero-line accent" data-i18n="heroTitle2">digitais inteligentes.</span>
+          </h1>
+
+          <p class="hero-description" data-i18n="heroDescription">
+            Desenvolvemos websites, sistemas web e estruturas de dados pensadas para transformar processos e aproximar empresas da tecnologia.
+          </p>
+
+          <div class="hero-buttons">
+
+            <a href="#services" class="button-main magnetic">
+              <span data-i18n="heroButton">Explorar soluções</span>
+              <i class="lni lni-arrow-right"></i>
+            </a>
+
+            <a href="#contact" class="button-secondary magnetic">
+              <i class="lni lni-comments"></i>
+              <span data-i18n="heroContact">Falar com a LOAK</span>
+            </a>
+
+          </div>
+
         </div>
 
-        <div class="final-visual">
-          <div class="final-visual-grid"></div>
-          <span class="final-line fl1"></span><span class="final-line fl2"></span>
-          <span class="final-line fl3"></span><span class="final-line fl4"></span>
-          <div class="final-core">LOAK</div>
-          <span class="final-node fn1" data-i18n="buildNodeWeb">WEB / UI</span>
-          <span class="final-node fn2" data-i18n="buildNodeData">DATABASE</span>
-          <span class="final-node fn3" data-i18n="buildNodeAutomation">AUTOMATION</span>
-          <span class="final-node fn4" data-i18n="buildNodeSecurity">SECURITY</span>
+
+        <div class="col-lg-6">
+
+          <div class="generative-shell" id="generativeShell">
+
+            <canvas class="generative-canvas" id="loakParticles" aria-label="Logo LOAK formada por partículas interativas"></canvas>
+
+            <div class="generative-ui">
+
+              <div class="gen-topline">
+                generative identity / live
+              </div>
+
+              <div class="gen-mode">
+                CANVAS_2D / PARTICLE_ENGINE
+              </div>
+
+              <div class="gen-corner a"></div>
+              <div class="gen-corner b"></div>
+              <div class="gen-corner c"></div>
+              <div class="gen-corner d"></div>
+
+              <div class="gen-caption">
+                <strong>LOAK / SIGNAL FIELD</strong>
+                particles rebuild the system
+              </div>
+
+              <div class="gen-instruction">
+                move o mouse → distorce<br>
+                clique → explode
+              </div>
+
+            </div>
+
+          </div>
+
         </div>
+
       </div>
 
-      <div class="final-footer">
-        <span data-i18n="buildFooterArchitecture">architecture / scalable</span>
-        <span data-i18n="buildFooterProduction">build / production</span>
-        <span data-i18n="buildFooterVersion">version / 01.0</span>
-      </div>
     </div>
 
-    <canvas class="blueprint-canvas" id="blueprintCanvas"></canvas>
-    <div class="blueprint-ui">
-      <div class="blueprint-label" data-i18n="buildBlueprintLabel">BLUEPRINT / MOVE TO BUILD</div>
-      <div class="blueprint-help" data-i18n-html="buildBlueprintHelp">passe o mouse para construir<br>no celular, role a página</div>
-    </div>
-  </div>
-</div>
-
-</div>
-</div>
-</section>
+  </section>
 
 
 
@@ -3195,18 +3403,6 @@ body.dark .gen-mode {
           PHP
         </span>
 
-        <span class="stack-item">
-          Git
-        </span>
-
-        <span class="stack-item">
-          GitHub
-        </span>
-
-        <span class="stack-item">
-          UI / UX
-        </span>
-
       </div>
 
     </div>
@@ -3246,167 +3442,45 @@ body.dark .gen-mode {
       </div>
 
 
-      <div class="row g-4">
-
+      
+      <div class="row g-4 services-real">
 
         <div class="col-lg-4 col-md-6">
-
           <div class="service-card">
-
-            <div class="service-icon">
-              <i class="lni lni-website"></i>
-            </div>
-
-            <h4 data-i18n="service1Title">
-              Websites
-            </h4>
-
+            <div class="service-icon"><i class="lni lni-website"></i></div>
+            <div class="service-number">01</div>
+            <h4 data-i18n="service1Title">Websites</h4>
             <p data-i18n="service1Text">
-
-              Sites institucionais,
-              landing pages e projetos
-              responsivos para fortalecer
-              a presença digital da empresa.
-
+              Sites institucionais, landing pages e páginas responsivas desenvolvidas de acordo com cada projeto.
             </p>
-
           </div>
-
         </div>
 
-
         <div class="col-lg-4 col-md-6">
-
           <div class="service-card">
-
-            <div class="service-icon">
-              <i class="lni lni-code-alt"></i>
-            </div>
-
-            <h4 data-i18n="service2Title">
-              Sistemas Web
-            </h4>
-
+            <div class="service-icon"><i class="lni lni-code-alt"></i></div>
+            <div class="service-number">02</div>
+            <h4 data-i18n="service2Title">Sistemas Web</h4>
             <p data-i18n="service2Text">
-
-              Desenvolvimento de sistemas
-              personalizados para automatizar
-              tarefas e organizar processos.
-
+              Sistemas personalizados para organizar informações, cadastros, processos e necessidades específicas.
             </p>
-
           </div>
-
         </div>
 
-
         <div class="col-lg-4 col-md-6">
-
           <div class="service-card">
-
-            <div class="service-icon">
-              <i class="lni lni-database"></i>
-            </div>
-
-            <h4 data-i18n="service3Title">
-              Banco de Dados
-            </h4>
-
+            <div class="service-icon"><i class="lni lni-database"></i></div>
+            <div class="service-number">03</div>
+            <h4 data-i18n="service3Title">Banco de Dados</h4>
             <p data-i18n="service3Text">
-
-              Modelagem e organização
-              de informações utilizando
-              estruturas de dados seguras
-              e eficientes.
-
+              Modelagem e organização de dados com estruturas pensadas para manter informações bem organizadas e funcionais.
             </p>
-
           </div>
-
-        </div>
-
-
-        <div class="col-lg-4 col-md-6">
-
-          <div class="service-card">
-
-            <div class="service-icon">
-              <i class="lni lni-network"></i>
-            </div>
-
-            <h4 data-i18n="service4Title">
-              Redes
-            </h4>
-
-            <p data-i18n="service4Text">
-
-              Planejamento e estruturação
-              de redes para melhorar
-              conectividade,
-              organização e desempenho.
-
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <div class="col-lg-4 col-md-6">
-
-          <div class="service-card">
-
-            <div class="service-icon">
-              <i class="lni lni-lock"></i>
-            </div>
-
-            <h4 data-i18n="service5Title">
-              Segurança Digital
-            </h4>
-
-            <p data-i18n="service5Text">
-
-              Boas práticas e estruturas
-              desenvolvidas para aumentar
-              a proteção de informações
-              e acessos.
-
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <div class="col-lg-4 col-md-6">
-
-          <div class="service-card">
-
-            <div class="service-icon">
-              <i class="lni lni-cog"></i>
-            </div>
-
-            <h4 data-i18n="service6Title">
-              Automação
-            </h4>
-
-            <p data-i18n="service6Text">
-
-              Tecnologia aplicada
-              para reduzir tarefas manuais
-              e tornar processos
-              mais rápidos e organizados.
-
-            </p>
-
-          </div>
-
         </div>
 
       </div>
 
     </div>
-
   </section>
 
 
@@ -4586,31 +4660,6 @@ body.dark .gen-mode {
     const translations = {
 
       pt: {
-        buildHeroIndex:"LOAK / MODO DE CONSTRUÇÃO",
-        buildTitle1:"NÓS NÃO",
-        buildTitle2:"FAZEMOS SÓ",
-        buildTitle3:"SITES.",
-        buildHeroDescription:"Construímos sistemas digitais pensados para funcionar, crescer e transformar processos reais.",
-        buildExplore:"Explorar soluções",
-        buildStartProject:"Começar um projeto",
-        buildSystem:"SISTEMA LOAK",
-        buildStatusLabel:"status:",
-        buildReady:"pronto",
-        buildArchitecture:"arquitetura digital",
-        buildFromStructure:"Da estrutura ao produto.",
-        buildSystemText:"Estratégia, interface e desenvolvimento trabalhando como um único sistema.",
-        buildSolution:"construir_solução()",
-        buildNodeWeb:"WEB / UI",
-        buildNodeData:"BANCO DE DADOS",
-        buildNodeAutomation:"AUTOMAÇÃO",
-        buildNodeSecurity:"SEGURANÇA",
-        buildFooterArchitecture:"arquitetura / escalável",
-        buildFooterProduction:"build / produção",
-        buildFooterVersion:"versão / 01.0",
-        buildBlueprintLabel:"PLANTA / MOVA PARA CONSTRUIR",
-        buildBlueprintHelp:"passe o mouse para construir<br>no celular, role a página",
-        buildProgressLabel:"MODO DE CONSTRUÇÃO",
-
 
         navHome:
           "Início",
@@ -4937,31 +4986,6 @@ body.dark .gen-mode {
 
 
       en: {
-        buildHeroIndex:"LOAK / BUILD MODE",
-        buildTitle1:"WE DON'T",
-        buildTitle2:"JUST BUILD",
-        buildTitle3:"WEBSITES.",
-        buildHeroDescription:"We build digital systems designed to work, scale and transform real processes.",
-        buildExplore:"Explore solutions",
-        buildStartProject:"Start a project",
-        buildSystem:"LOAK SYSTEM",
-        buildStatusLabel:"status:",
-        buildReady:"ready",
-        buildArchitecture:"digital architecture",
-        buildFromStructure:"From structure to product.",
-        buildSystemText:"Strategy, interface and development working as one connected system.",
-        buildSolution:"build_solution()",
-        buildNodeWeb:"WEB / UI",
-        buildNodeData:"DATABASE",
-        buildNodeAutomation:"AUTOMATION",
-        buildNodeSecurity:"SECURITY",
-        buildFooterArchitecture:"architecture / scalable",
-        buildFooterProduction:"build / production",
-        buildFooterVersion:"version / 01.0",
-        buildBlueprintLabel:"BLUEPRINT / MOVE TO BUILD",
-        buildBlueprintHelp:"move the mouse to build<br>on mobile, scroll the page",
-        buildProgressLabel:"BUILD MODE",
-
 
         navHome:
           "Home",
@@ -5402,14 +5426,6 @@ body.dark .gen-mode {
 
     }
 
-
-    
-    function syncBuildDynamicTranslation() {
-      const bp = document.getElementById("buildPercent");
-      if (bp && bp.textContent && (bp.textContent === "COMPLETE" || bp.textContent === "CONCLUÍDO")) {
-        bp.textContent = currentLanguage === "en" ? "COMPLETE" : "CONCLUÍDO";
-      }
-    }
 
     languageButton.addEventListener(
       "click",
@@ -5913,116 +5929,239 @@ body.dark .gen-mode {
 
 
 
-
-
-
 <script>
-(function(){
-  const canvas=document.getElementById("blueprintCanvas");
-  const stage=document.getElementById("buildStage");
-  const buildPercent=document.getElementById("buildPercent");
-  if(!canvas||!stage)return;
+(function () {
+  const canvas = document.getElementById("loakParticles");
+  const shell = document.getElementById("generativeShell");
 
-  const ctx=canvas.getContext("2d");
-  const dpr=Math.min(window.devicePixelRatio||1,2);
-  let width=0,height=0;
+  if (!canvas || !shell) return;
 
-  function drawBlueprint(){
-    const rect=stage.getBoundingClientRect();
-    width=rect.width;height=rect.height;
-    canvas.width=Math.floor(width*dpr);canvas.height=Math.floor(height*dpr);
-    canvas.style.width=width+"px";canvas.style.height=height+"px";
-    ctx.setTransform(dpr,0,0,dpr,0,0);
+  const ctx = canvas.getContext("2d");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    ctx.fillStyle="#061a31";ctx.fillRect(0,0,width,height);
+  let particles = [];
+  let width = 0;
+  let height = 0;
+  let dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-    ctx.lineWidth=1;
-    ctx.strokeStyle="rgba(80,180,255,.16)";
-    for(let x=0;x<width;x+=24){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,height);ctx.stroke()}
-    for(let y=0;y<height;y+=24){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(width,y);ctx.stroke()}
+  const mouse = {
+    x: -9999,
+    y: -9999,
+    radius: 92
+  };
 
-    ctx.strokeStyle="rgba(120,205,255,.23)";
-    for(let x=0;x<width;x+=96){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,height);ctx.stroke()}
-    for(let y=0;y<height;y+=96){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(width,y);ctx.stroke()}
-
-    const pad=34;
-    ctx.strokeStyle="rgba(135,214,255,.68)";
-    ctx.lineWidth=1.2;
-    ctx.strokeRect(pad,62,width-pad*2,height-115);
-    ctx.strokeRect(pad+20,105,width*.42,height*.48);
-    ctx.strokeRect(width*.53,105,width*.36,height*.48);
-
-    ctx.strokeStyle="rgba(135,214,255,.5)";
-    [[pad+34,140,width*.29],[pad+34,170,width*.34],[pad+34,200,width*.25],[pad+34,250,width*.27]].forEach(l=>{
-      ctx.beginPath();ctx.moveTo(l[0],l[1]);ctx.lineTo(l[0]+l[2],l[1]);ctx.stroke()
-    });
-
-    const rx=width*.55,ry=125,rw=width*.32,rh=height*.39;
-    ctx.strokeRect(rx,ry,rw,rh);
-    ctx.beginPath();ctx.moveTo(rx,ry);ctx.lineTo(rx+rw,ry+rh);ctx.moveTo(rx+rw,ry);ctx.lineTo(rx,ry+rh);ctx.stroke();
-
-    ctx.fillStyle="rgba(135,214,255,.82)";
-    ctx.font="10px Courier New";
-    ctx.fillText("LOAK / STRUCTURE_01",pad,35);
-    ctx.fillText("GRID 24PX",width-105,35);
-    ctx.fillText("MODULE / COPY",pad+20,98);
-    ctx.fillText("MODULE / SYSTEM",width*.53,98);
-    ctx.fillText("WIDTH: "+Math.round(width)+" PX",pad,height-28);
-    ctx.fillText("STATUS: BLUEPRINT",width-150,height-28);
+  function isDark() {
+    return document.body.classList.contains("dark");
   }
 
-  function eraseAt(clientX,clientY,radius){
-    const rect=canvas.getBoundingClientRect();
-    const x=clientX-rect.left,y=clientY-rect.top;
-    ctx.save();ctx.globalCompositeOperation="destination-out";
-    const g=ctx.createRadialGradient(x,y,0,x,y,radius);
-    g.addColorStop(0,"rgba(0,0,0,1)");
-    g.addColorStop(.62,"rgba(0,0,0,.94)");
-    g.addColorStop(1,"rgba(0,0,0,0)");
-    ctx.fillStyle=g;ctx.beginPath();ctx.arc(x,y,radius,0,Math.PI*2);ctx.fill();ctx.restore();
+  function particleColor(alpha) {
+    return isDark()
+      ? "rgba(87,184,255," + alpha + ")"
+      : "rgba(23,105,170," + alpha + ")";
   }
 
-  stage.addEventListener("pointermove",e=>{
-    if(e.pointerType==="mouse") eraseAt(e.clientX,e.clientY,95);
-    else if(e.buttons) eraseAt(e.clientX,e.clientY,72);
-  });
-  stage.addEventListener("pointerdown",e=>eraseAt(e.clientX,e.clientY,e.pointerType==="mouse"?140:82));
-  stage.addEventListener("click",e=>eraseAt(e.clientX,e.clientY,155));
+  function createTargets() {
+    const off = document.createElement("canvas");
+    const octx = off.getContext("2d");
 
-  function scrollReveal(){
-    if(!window.matchMedia("(pointer:coarse)").matches)return;
-    const rect=stage.getBoundingClientRect(),vh=window.innerHeight;
-    if(rect.top<vh&&rect.bottom>0){
-      const p=Math.min(1,Math.max(0,(vh-rect.top)/(vh+rect.height)));
-      const revealY=p*height;
-      ctx.save();ctx.globalCompositeOperation="destination-out";
-      const grad=ctx.createLinearGradient(0,0,0,Math.max(1,revealY+90));
-      grad.addColorStop(0,"rgba(0,0,0,1)");
-      grad.addColorStop(.78,"rgba(0,0,0,.96)");
-      grad.addColorStop(1,"rgba(0,0,0,0)");
-      ctx.fillStyle=grad;ctx.fillRect(0,0,width,revealY+110);ctx.restore();
-    }
-  }
+    off.width = Math.max(500, Math.floor(width));
+    off.height = Math.max(400, Math.floor(height));
 
-  function updateBuildProgress(){
-    const doc=document.documentElement,max=doc.scrollHeight-window.innerHeight;
-    const p=max>0?Math.min(1,window.scrollY/max):0;
-    const percent=Math.round(p*100);
-    document.documentElement.style.setProperty("--build-progress",percent+"%");
-    if(buildPercent){
-      if(percent>=99){
-        buildPercent.textContent = (typeof currentLanguage !== "undefined" && currentLanguage === "en") ? "COMPLETE" : "CONCLUÍDO";
-      } else {
-        buildPercent.textContent = percent + "%";
+    octx.clearRect(0,0,off.width,off.height);
+
+    const size = Math.min(off.width * .28, 180);
+    octx.font = "900 " + size + "px Arial";
+    octx.textAlign = "center";
+    octx.textBaseline = "middle";
+    octx.fillStyle = "#000";
+
+    octx.fillText("LOAK", off.width / 2, off.height / 2);
+
+    const data = octx.getImageData(0,0,off.width,off.height).data;
+    const gap = width < 500 ? 7 : 6;
+    const targets = [];
+
+    for (let y = 0; y < off.height; y += gap) {
+      for (let x = 0; x < off.width; x += gap) {
+        const a = data[(y * off.width + x) * 4 + 3];
+        if (a > 100) targets.push({x, y});
       }
     }
-    scrollReveal();
+
+    // Cap work for weaker devices.
+    const max = width < 500 ? 850 : 1450;
+    if (targets.length > max) {
+      const step = Math.ceil(targets.length / max);
+      return targets.filter((_, i) => i % step === 0);
+    }
+
+    return targets;
   }
 
-  let timer;
-  window.addEventListener("resize",()=>{clearTimeout(timer);timer=setTimeout(()=>{drawBlueprint();updateBuildProgress()},160)});
-  window.addEventListener("scroll",updateBuildProgress,{passive:true});
-  drawBlueprint();updateBuildProgress();
+  function rebuild() {
+    const rect = shell.getBoundingClientRect();
+    width = rect.width;
+    height = rect.height;
+
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
+    canvas.style.width = width + "px";
+    canvas.style.height = height + "px";
+
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+
+    const targets = createTargets();
+
+    particles = targets.map(function (t) {
+      const angle = Math.random() * Math.PI * 2;
+      const dist = Math.max(width,height) * (.25 + Math.random() * .65);
+
+      return {
+        x: width / 2 + Math.cos(angle) * dist,
+        y: height / 2 + Math.sin(angle) * dist,
+        tx: t.x,
+        ty: t.y,
+        vx: 0,
+        vy: 0,
+        size: 1 + Math.random() * 1.7,
+        phase: Math.random() * Math.PI * 2
+      };
+    });
+  }
+
+  function explode() {
+    particles.forEach(function (p) {
+      const dx = p.x - width / 2;
+      const dy = p.y - height / 2;
+      const len = Math.hypot(dx,dy) || 1;
+      const power = 7 + Math.random() * 10;
+
+      p.vx += (dx / len) * power;
+      p.vy += (dy / len) * power;
+    });
+  }
+
+  function draw(time) {
+    ctx.clearRect(0,0,width,height);
+
+    const t = time * .001;
+
+    particles.forEach(function (p) {
+      let dx = p.tx - p.x;
+      let dy = p.ty - p.y;
+
+      p.vx += dx * .028;
+      p.vy += dy * .028;
+
+      const mdx = p.x - mouse.x;
+      const mdy = p.y - mouse.y;
+      const md = Math.hypot(mdx,mdy);
+
+      if (md < mouse.radius) {
+        const force = (1 - md / mouse.radius) * 2.2;
+        const len = md || 1;
+        p.vx += (mdx / len) * force;
+        p.vy += (mdy / len) * force;
+      }
+
+      p.vx *= .83;
+      p.vy *= .83;
+
+      if (!reduceMotion) {
+        p.vx += Math.cos(t * .8 + p.phase) * .006;
+        p.vy += Math.sin(t * .7 + p.phase) * .006;
+      }
+
+      p.x += p.vx;
+      p.y += p.vy;
+
+      const speed = Math.min(1, Math.hypot(p.vx,p.vy) / 5);
+      ctx.fillStyle = particleColor(.58 + speed * .42);
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.size + speed * .8,0,Math.PI*2);
+      ctx.fill();
+    });
+
+    // subtle local connections near pointer
+    if (mouse.x > -1000) {
+      ctx.strokeStyle = particleColor(.10);
+      ctx.lineWidth = 1;
+
+      let drawn = 0;
+      for (let i=0; i<particles.length && drawn<55; i+=8) {
+        const p = particles[i];
+        const md = Math.hypot(p.x-mouse.x,p.y-mouse.y);
+
+        if (md < 145) {
+          ctx.beginPath();
+          ctx.moveTo(p.x,p.y);
+          ctx.lineTo(mouse.x,mouse.y);
+          ctx.stroke();
+          drawn++;
+        }
+      }
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  shell.addEventListener("pointermove", function (e) {
+    const rect = shell.getBoundingClientRect();
+    mouse.x = e.clientX - rect.left;
+    mouse.y = e.clientY - rect.top;
+  });
+
+  shell.addEventListener("pointerleave", function () {
+    mouse.x = -9999;
+    mouse.y = -9999;
+  });
+
+  shell.addEventListener("click", explode);
+
+  let resizeTimer;
+  window.addEventListener("resize", function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(rebuild, 180);
+  });
+
+  rebuild();
+  requestAnimationFrame(draw);
+
+  // Custom cursor
+  const cursor = document.getElementById("loakCursor");
+
+  if (cursor && window.matchMedia("(pointer:fine)").matches) {
+    let cx = innerWidth / 2;
+    let cy = innerHeight / 2;
+    let tx = cx;
+    let ty = cy;
+
+    window.addEventListener("mousemove", function (e) {
+      tx = e.clientX;
+      ty = e.clientY;
+    });
+
+    function cursorLoop() {
+      cx += (tx - cx) * .18;
+      cy += (ty - cy) * .18;
+      cursor.style.left = cx + "px";
+      cursor.style.top = cy + "px";
+      requestAnimationFrame(cursorLoop);
+    }
+
+    requestAnimationFrame(cursorLoop);
+
+    document.querySelectorAll("a, button, .service-card, .process-card, .plan-card")
+      .forEach(function (el) {
+        el.addEventListener("mouseenter", function () {
+          cursor.classList.add("active");
+        });
+
+        el.addEventListener("mouseleave", function () {
+          cursor.classList.remove("active");
+        });
+      });
+  }
 })();
 </script>
 
