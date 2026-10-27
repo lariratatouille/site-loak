@@ -10,6 +10,9 @@
 
   <meta name="description" content="LOAK - Desenvolvimento de websites, sistemas, banco de dados e soluções digitais.">
 
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="shortcut icon" href="assets/img/favicon.svg">
+
   <!-- Bootstrap -->
   <link rel="stylesheet" href="assets/css/bootstrap-5.0.0-beta1.min.css">
 
@@ -3301,6 +3304,162 @@ body.dark .gen-mode {
     grid-template-columns:78px minmax(0,1fr);
     gap:8px
   }
+}
+
+
+
+/* ===== LOAK MOBILE COMPACTO ===== */
+@media (max-width: 576px) {
+  body { font-size: 14px; }
+
+  .navbar { min-height: 64px !important; }
+  .header .container { min-height: 64px !important; }
+  .navbar-brand {
+    width: 96px !important;
+    height: 56px !important;
+  }
+  .navbar-brand .site-logo {
+    width: 92px !important;
+    max-width: 92px !important;
+  }
+  .header-tools-fixed .tool-button,
+  .navbar-toggler {
+    width: 34px !important;
+    min-width: 34px !important;
+    height: 34px !important;
+    min-height: 34px !important;
+  }
+  .header-tools-fixed .language-button {
+    width: 40px !important;
+    min-width: 40px !important;
+    font-size: 11px !important;
+  }
+
+  .hero {
+    min-height: auto !important;
+    padding: 92px 0 52px !important;
+  }
+  .hero .row { --bs-gutter-y: 1.5rem; }
+  .hero-index,
+  .hero-badge {
+    font-size: 11px !important;
+    margin-bottom: 14px !important;
+  }
+  .hero h1 {
+    font-size: 34px !important;
+    line-height: 1 !important;
+    letter-spacing: -1.6px !important;
+    margin-bottom: 16px !important;
+  }
+  .hero-description {
+    font-size: 13px !important;
+    line-height: 1.55 !important;
+    margin-bottom: 20px !important;
+  }
+  .hero-actions {
+    gap: 8px !important;
+    flex-wrap: wrap !important;
+  }
+  .hero-actions .btn,
+  .hero-actions a {
+    min-height: 40px !important;
+    padding: 10px 14px !important;
+    font-size: 12px !important;
+  }
+  .generative-shell {
+    height: 260px !important;
+    min-height: 260px !important;
+    margin: 24px auto 0 !important;
+  }
+  .generative-shell::after { font-size: 68px !important; }
+  .gen-topline, .gen-caption { font-size: 7px !important; }
+  .gen-mode, .gen-instruction { font-size: 6.5px !important; }
+
+  .stack-section { padding: 32px 0 !important; }
+  .stack-title { font-size: 12px !important; margin-bottom: 16px !important; }
+  .stack-items { gap: 8px !important; }
+  .stack-item {
+    min-width: 0 !important;
+    flex: 1 1 44% !important;
+    padding: 10px 8px !important;
+    font-size: 11px !important;
+  }
+
+  .section,
+  .developer-section {
+    padding-top: 50px !important;
+    padding-bottom: 50px !important;
+  }
+  .section-center { margin-bottom: 28px !important; }
+  .section-label {
+    font-size: 11px !important;
+    margin-bottom: 10px !important;
+  }
+  .section-title,
+  .section-center h2,
+  .developer-section h2 {
+    font-size: 27px !important;
+    line-height: 1.08 !important;
+    letter-spacing: -1px !important;
+    margin-bottom: 12px !important;
+  }
+  .section-text,
+  .section-center p {
+    font-size: 13px !important;
+    line-height: 1.55 !important;
+  }
+
+  .services-real .service-card,
+  .process-card,
+  .developer-card,
+  .plan-card,
+  .contact-card {
+    padding: 20px 18px !important;
+    min-height: auto !important;
+    border-radius: 12px !important;
+  }
+  .services-real .service-card h4,
+  .process-card h4,
+  .developer-card h4,
+  .plan-card h3,
+  .contact-card h3 {
+    font-size: 18px !important;
+    margin-bottom: 8px !important;
+  }
+  .service-card p,
+  .process-card p,
+  .developer-card p,
+  .plan-card p,
+  .contact-card p,
+  .contact-info span,
+  .contact-info a {
+    font-size: 12.5px !important;
+    line-height: 1.5 !important;
+  }
+  .service-number {
+    font-size: 24px !important;
+    right: 16px !important;
+    top: 14px !important;
+  }
+
+  .about-visual { margin-bottom: 22px !important; }
+  .about-image {
+    max-height: 280px !important;
+    object-fit: cover !important;
+  }
+  .floating-code { transform: scale(.82); transform-origin: bottom left; }
+  .about-list { gap: 8px !important; }
+  .about-list li {
+    font-size: 12.5px !important;
+    line-height: 1.45 !important;
+  }
+
+  .row.g-4, .row.g-5 { --bs-gutter-y: 1rem; }
+  .contact-info { gap: 10px !important; margin-bottom: 14px !important; }
+
+  .footer { padding-top: 38px !important; padding-bottom: 22px !important; }
+  .footer-brand img { max-width: 110px !important; }
+  .footer p, .footer a { font-size: 12px !important; }
 }
 
 </style>
