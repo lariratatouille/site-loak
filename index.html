@@ -8,6 +8,18 @@
 
   <title>LOAK | Tecnologia & Desenvolvimento</title>
 
+  <script>
+    (function () {
+      try {
+        const saved = localStorage.getItem('loak-theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const useDark = saved ? saved === 'dark' : prefersDark;
+        if (useDark) document.documentElement.classList.add('theme-dark-preload');
+      } catch (e) {}
+    })();
+  </script>
+
+
   <meta name="description" content="LOAK - Desenvolvimento de websites, sistemas, banco de dados e soluções digitais.">
 
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
@@ -3462,6 +3474,259 @@ body.dark .gen-mode {
   .footer p, .footer a { font-size: 12px !important; }
 }
 
+
+
+/* ===== TEMA AUTOMATICO ===== */
+html.theme-dark-preload body { background:#07111d; }
+@media (prefers-color-scheme: dark) {
+  html:not(.force-light) body { color-scheme: dark; }
+}
+
+/* ===== MOBILE EXTRA COMPACTO ===== */
+@media (max-width: 576px) {
+  html { font-size: 13px; }
+  body { font-size: 13px !important; }
+
+  .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+
+  .header .container,
+  .navbar {
+    min-height: 58px !important;
+  }
+  .navbar-brand {
+    width: 82px !important;
+    height: 50px !important;
+  }
+  .navbar-brand .site-logo {
+    width: 80px !important;
+    max-width: 80px !important;
+  }
+  .header-tools-fixed .tool-button,
+  .navbar-toggler {
+    width: 31px !important;
+    min-width: 31px !important;
+    height: 31px !important;
+    min-height: 31px !important;
+  }
+  .header-tools-fixed .language-button {
+    width: 36px !important;
+    min-width: 36px !important;
+    font-size: 10px !important;
+  }
+  .navbar-collapse {
+    margin-top: 5px !important;
+    padding: 10px !important;
+  }
+  .navbar-nav .nav-link {
+    font-size: 12px !important;
+    padding: 8px 10px !important;
+  }
+
+  .hero {
+    min-height: auto !important;
+    padding: 78px 0 34px !important;
+  }
+  .hero .row { --bs-gutter-y: .9rem !important; }
+  .hero-index,
+  .hero-badge {
+    font-size: 10px !important;
+    margin-bottom: 10px !important;
+    padding: 6px 10px !important;
+  }
+  .hero h1 {
+    font-size: 29px !important;
+    line-height: 1.02 !important;
+    letter-spacing: -1.2px !important;
+    margin-bottom: 12px !important;
+    max-width: 100% !important;
+  }
+  .hero-description {
+    font-size: 12px !important;
+    line-height: 1.45 !important;
+    margin-bottom: 14px !important;
+    max-width: 100% !important;
+  }
+  .hero-actions {
+    gap: 6px !important;
+    margin-top: 0 !important;
+  }
+  .hero-actions .btn,
+  .hero-actions a {
+    min-height: 36px !important;
+    padding: 8px 11px !important;
+    font-size: 11px !important;
+    border-radius: 9px !important;
+  }
+
+  .generative-shell {
+    height: 205px !important;
+    min-height: 205px !important;
+    margin: 18px auto 0 !important;
+    border-radius: 18px 6px 18px 6px !important;
+  }
+  .generative-shell::after { font-size: 54px !important; }
+  .gen-topline,
+  .gen-caption { font-size: 6px !important; }
+  .gen-mode,
+  .gen-instruction { font-size: 5.8px !important; }
+
+  .stack-section {
+    padding: 22px 0 !important;
+  }
+  .stack-title {
+    font-size: 10px !important;
+    margin-bottom: 10px !important;
+  }
+  .stack-items {
+    gap: 6px !important;
+  }
+  .stack-item {
+    padding: 8px 6px !important;
+    font-size: 10px !important;
+    border-radius: 8px !important;
+  }
+
+  .section,
+  .developer-section {
+    padding-top: 34px !important;
+    padding-bottom: 34px !important;
+  }
+  .section-center {
+    margin-bottom: 20px !important;
+  }
+  .section-label {
+    font-size: 9.5px !important;
+    margin-bottom: 7px !important;
+  }
+  .section-title,
+  .section-center h2,
+  .developer-section h2,
+  #about h2,
+  #contact h2 {
+    font-size: 23px !important;
+    line-height: 1.08 !important;
+    letter-spacing: -.7px !important;
+    margin-bottom: 9px !important;
+  }
+  .section-text,
+  .section-center p,
+  #about p,
+  #contact p {
+    font-size: 11.5px !important;
+    line-height: 1.45 !important;
+  }
+
+  .services-real .service-card,
+  .process-card,
+  .developer-card,
+  .plan-card,
+  .contact-card {
+    padding: 15px 14px !important;
+    min-height: auto !important;
+    border-radius: 10px !important;
+  }
+  .services-real .service-card h4,
+  .process-card h4,
+  .developer-card h4,
+  .plan-card h3,
+  .contact-card h3 {
+    font-size: 16px !important;
+    margin-bottom: 6px !important;
+  }
+  .service-card p,
+  .process-card p,
+  .developer-card p,
+  .plan-card p,
+  .contact-card p,
+  .contact-info span,
+  .contact-info a {
+    font-size: 11px !important;
+    line-height: 1.42 !important;
+  }
+  .service-card i,
+  .process-card i,
+  .developer-card i {
+    font-size: 26px !important;
+  }
+  .service-number {
+    font-size: 20px !important;
+    right: 12px !important;
+    top: 10px !important;
+  }
+
+  .about-visual {
+    margin-bottom: 14px !important;
+  }
+  .about-image {
+    max-height: 215px !important;
+    width: 100% !important;
+    object-fit: cover !important;
+  }
+  .floating-code {
+    transform: scale(.68) !important;
+    transform-origin: bottom left !important;
+  }
+  .about-list {
+    gap: 6px !important;
+    margin-top: 10px !important;
+  }
+  .about-list li {
+    font-size: 11px !important;
+    line-height: 1.4 !important;
+  }
+
+  .process-number { font-size: 22px !important; }
+  .row.g-4, .row.g-5 {
+    --bs-gutter-y: .75rem !important;
+    --bs-gutter-x: .75rem !important;
+  }
+
+  .form-control-loak,
+  input,
+  textarea,
+  select {
+    font-size: 12px !important;
+  }
+  .form-control-loak {
+    padding: 9px 10px !important;
+    margin-bottom: 9px !important;
+  }
+  textarea.form-control-loak {
+    min-height: 90px !important;
+  }
+  .contact-info {
+    gap: 8px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .footer {
+    padding-top: 26px !important;
+    padding-bottom: 16px !important;
+  }
+  .footer-brand img {
+    max-width: 92px !important;
+  }
+  .footer p,
+  .footer a,
+  .footer li {
+    font-size: 10.5px !important;
+    line-height: 1.4 !important;
+  }
+  .footer .row { --bs-gutter-y: .75rem !important; }
+
+  .back-to-top {
+    width: 38px !important;
+    height: 38px !important;
+    right: 12px !important;
+    bottom: 12px !important;
+  }
+}
+
 </style>
 
 </head>
@@ -6693,6 +6958,45 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+</script>
+
+
+<script>
+(function () {
+  const storageKey = 'loak-theme';
+  const media = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+
+  function applyTheme(theme, save) {
+    const dark = theme === 'dark';
+    document.body.classList.toggle('dark', dark);
+    document.documentElement.classList.remove('theme-dark-preload');
+    document.documentElement.classList.toggle('force-light', !dark);
+    if (save) {
+      try { localStorage.setItem(storageKey, theme); } catch (e) {}
+    }
+  }
+
+  let saved = null;
+  try { saved = localStorage.getItem(storageKey); } catch (e) {}
+  applyTheme(saved || (media && media.matches ? 'dark' : 'light'), false);
+
+  const themeButtons = document.querySelectorAll('[data-theme-toggle], #themeToggle, .theme-toggle');
+  themeButtons.forEach(btn => {
+    btn.addEventListener('click', function () {
+      applyTheme(document.body.classList.contains('dark') ? 'light' : 'dark', true);
+    });
+  });
+
+  if (media) {
+    const onChange = function (e) {
+      let manual = null;
+      try { manual = localStorage.getItem(storageKey); } catch (err) {}
+      if (!manual) applyTheme(e.matches ? 'dark' : 'light', false);
+    };
+    if (media.addEventListener) media.addEventListener('change', onChange);
+    else if (media.addListener) media.addListener(onChange);
+  }
+})();
 </script>
 
 </body>
