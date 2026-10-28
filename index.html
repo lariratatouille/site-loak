@@ -20,7 +20,7 @@
   </script>
 
 
-  <meta name="description" content="LOAK - Desenvolvimento de websites, sistemas, banco de dados e soluções digitais.">
+  <meta name="description" content="LOAK - Desenvolvimento de websites, sistemas, design e soluções digitais.">
 
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <link rel="shortcut icon" href="assets/img/favicon.svg">
@@ -3727,6 +3727,68 @@ html.theme-dark-preload body { background:#07111d; }
   }
 }
 
+
+
+/* ===== AJUSTES FINAIS SOLICITADOS ===== */
+.process-dark {
+  background: #07111d !important;
+  color: #edf6ff !important;
+}
+.process-dark .section-label {
+  color: #45d9ff !important;
+}
+.process-dark .section-heading,
+.process-dark .section-description {
+  color: #edf6ff !important;
+}
+.process-dark .process-card {
+  background: #101d2b !important;
+  border-color: #203246 !important;
+  color: #edf6ff !important;
+}
+.process-dark .process-card h4,
+.process-dark .process-card p {
+  color: #edf6ff !important;
+}
+.process-dark .process-card p {
+  color: #9fb0c2 !important;
+}
+.process-dark .process-number {
+  color: rgba(113,183,255,.16) !important;
+}
+.process-dark .process-card i {
+  color: #45d9ff !important;
+}
+
+/* Mantém todos os botões Solicitar alinhados no rodapé */
+#plans .row.g-4 {
+  align-items: stretch;
+}
+#plans .col-lg-3,
+#plans .col-md-6 {
+  display: flex;
+}
+#plans .plan-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+#plans .plan-card ul {
+  flex-grow: 1;
+}
+#plans .plan-card > a.button-secondary,
+#plans .plan-card > a.button-primary {
+  margin-top: auto !important;
+}
+
+/* Caixa de mensagem pode ser aumentada pelo usuário */
+#messageInput {
+  resize: vertical !important;
+  min-height: 155px;
+  max-height: 520px;
+}
+
 </style>
 
 </head>
@@ -4029,7 +4091,7 @@ html.theme-dark-preload body { background:#07111d; }
           <div class="service-card">
             <div class="service-icon"><i class="lni lni-database"></i></div>
             <div class="service-number">03</div>
-            <h4 data-i18n="service3Title">Banco de Dados</h4>
+            <h4 data-i18n="service3Title">Design</h4>
             <p data-i18n="service3Text">
               Modelagem e organização de dados com estruturas pensadas para manter informações bem organizadas e funcionais.
             </p>
@@ -4200,7 +4262,15 @@ html.theme-dark-preload body { background:#07111d; }
      PROCESSO
 ========================================================= -->
 
-  <section id="process" class="section alt">
+  
+
+
+
+  <!-- =========================================================
+     CARA DE EMPRESA DE PROGRAMAÇÃO
+========================================================= -->
+
+  <section id="process" class="section process-dark">
 
     <div class="container">
 
@@ -4330,141 +4400,6 @@ html.theme-dark-preload body { background:#07111d; }
               Testamos,
               ajustamos e entregamos
               o projeto pronto para uso.
-
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-
-  <!-- =========================================================
-     CARA DE EMPRESA DE PROGRAMAÇÃO
-========================================================= -->
-
-  <section class="developer-section">
-
-    <div class="container">
-
-      <div class="section-center">
-
-        <div class="section-label" data-i18n="whyLabel">
-          Desenvolvimento moderno
-        </div>
-
-
-        <h2 class="section-heading" data-i18n="whyTitle">
-          Código é só o começo.
-        </h2>
-
-
-        <p class="section-description" data-i18n="whyDescription">
-
-          Projetamos soluções pensando
-          na experiência,
-          organização,
-          desempenho
-          e evolução do projeto.
-
-        </p>
-
-      </div>
-
-
-      <div class="row g-4">
-
-        <div class="col-lg-3 col-md-6">
-
-          <div class="developer-card">
-
-            <i class="lni lni-mobile"></i>
-
-            <h4 data-i18n="why1Title">
-              Responsivo
-            </h4>
-
-            <p data-i18n="why1Text">
-
-              Interfaces adaptadas
-              para computadores,
-              tablets e celulares.
-
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <div class="col-lg-3 col-md-6">
-
-          <div class="developer-card">
-
-            <i class="lni lni-bolt"></i>
-
-            <h4 data-i18n="why2Title">
-              Performance
-            </h4>
-
-            <p data-i18n="why2Text">
-
-              Estruturas pensadas
-              para oferecer navegação
-              rápida e eficiente.
-
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <div class="col-lg-3 col-md-6">
-
-          <div class="developer-card">
-
-            <i class="lni lni-lock"></i>
-
-            <h4 data-i18n="why3Title">
-              Segurança
-            </h4>
-
-            <p data-i18n="why3Text">
-
-              Organização,
-              validação de dados
-              e boas práticas
-              durante o desenvolvimento.
-
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <div class="col-lg-3 col-md-6">
-
-          <div class="developer-card">
-
-            <i class="lni lni-layers"></i>
-
-            <h4 data-i18n="why4Title">
-              Escalabilidade
-            </h4>
-
-            <p data-i18n="why4Text">
-
-              Projetos estruturados
-              pensando também
-              em futuras melhorias.
 
             </p>
 
@@ -4630,7 +4565,7 @@ html.theme-dark-preload body { background:#07111d; }
               </li>
 
               <li data-i18n="plan3Item2">
-                Banco de dados
+                Design
               </li>
 
               <li data-i18n="plan3Item3">
@@ -4679,7 +4614,7 @@ html.theme-dark-preload body { background:#07111d; }
               </li>
 
               <li data-i18n="plan4Item3">
-                Banco de dados
+                Design
               </li>
 
               <li data-i18n="plan4Item4">
@@ -4786,7 +4721,7 @@ html.theme-dark-preload body { background:#07111d; }
                 </option>
 
                 <option>
-                  Banco de Dados
+                  Design
                 </option>
 
                 <option>
@@ -5051,7 +4986,7 @@ html.theme-dark-preload body { background:#07111d; }
 
             <li>
               <a href="#services">
-                Banco de Dados
+                Design
               </a>
             </li>
 
@@ -5290,7 +5225,7 @@ html.theme-dark-preload body { background:#07111d; }
 
 
         service3Title:
-          "Banco de Dados",
+          "Design",
 
         service3Text:
           "Modelagem e organização de informações utilizando estruturas de dados seguras e eficientes.",
@@ -5470,7 +5405,7 @@ html.theme-dark-preload body { background:#07111d; }
           "Login de usuários",
 
         plan3Item2:
-          "Banco de dados",
+          "Design",
 
         plan3Item3:
           "Dashboard",
@@ -5486,7 +5421,7 @@ html.theme-dark-preload body { background:#07111d; }
           "Projeto personalizado",
 
         plan4Item3:
-          "Banco de dados",
+          "Design",
 
         plan4Item4:
           "Integrações",
