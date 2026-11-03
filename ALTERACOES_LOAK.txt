@@ -1,0 +1,10 @@
+LOAK - ajustes solicitados
+1. Melhorias de responsividade em telas pequenas e navegacao movel.
+2. Remocao dos links de LinkedIn e GitHub (Instagram mantido).
+3. Formulario abre WhatsApp +55 19 3406-5624 com os dados preenchidos.
+   O visitante confirma o envio no aplicativo. Nada e enviado automaticamente.
+4. Uso de icones profissionais LineIcons ja presentes no projeto, evitando emojis
+   e dependencia externa do Flaticon. Icone de WhatsApp no botao de envio.
+
+Arquivo de codigo alterado: index.html.
+Teste no navegador de celular antes de publicar.

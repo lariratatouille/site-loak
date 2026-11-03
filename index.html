@@ -3789,6 +3789,34 @@ html.theme-dark-preload body { background:#07111d; }
   max-height: 520px;
 }
 
+
+
+/* Ajustes pontuais de responsividade — LOAK */
+html, body { max-width: 100%; overflow-x: clip; }
+img, svg, video, iframe { max-width: 100%; }
+.row > *, .container > *, .contact-card, .service-card, .plan-card { min-width: 0; }
+@media (max-width: 991.98px) {
+  #mainMenu { max-height: calc(100dvh - 90px); overflow-y: auto; }
+  #mainMenu .navbar-nav { width: 100%; align-items: stretch !important; }
+  #mainMenu .nav-link { display: block; padding: 11px 14px; }
+  #mainMenu .contact-header { display: inline-flex; margin: 12px 14px; }
+  .hero .row, #contact .row { row-gap: 28px !important; }
+}
+@media (max-width: 575.98px) {
+  .container { padding-left: 18px; padding-right: 18px; }
+  h1, h2, h3, p { overflow-wrap: break-word; }
+  .section-heading { font-size: clamp(1.8rem, 8vw, 2.6rem); }
+  .hero h1 { font-size: clamp(2rem, 9vw, 3.2rem); }
+  .contact-card { padding: 24px 18px !important; }
+  .contact-card .form-control-loak,
+  .contact-card select,
+  .contact-card textarea { width: 100%; max-width: 100%; min-width: 0; }
+  .phone-row { display: flex; gap: 10px; width: 100%; }
+  .phone-row .ddd-input { flex: 0 0 74px; width: 74px; }
+  .phone-row #phoneInput { flex: 1 1 auto; min-width: 0; }
+  .footer .row > * { text-align: left; }
+  .footer-social { flex-wrap: wrap; }
+}
 </style>
 
 </head>
@@ -4739,7 +4767,7 @@ html.theme-dark-preload body { background:#07111d; }
 
               <button type="submit" class="button-main w-100 border-0" data-i18n="sendButton">
 
-                Enviar mensagem
+                <i class="lni lni-whatsapp" aria-hidden="true"></i> Enviar mensagem
 
               </button>
 
@@ -4900,24 +4928,6 @@ html.theme-dark-preload body { background:#07111d; }
 
             </li>
 
-
-            <li>
-
-              <a href="#">
-                <i class="lni lni-linkedin-original"></i>
-              </a>
-
-            </li>
-
-
-            <li>
-
-              <a href="#">
-                <i class="lni lni-github-original"></i>
-              </a>
-
-            </li>
-
           </ul>
 
         </div>
@@ -5059,7 +5069,7 @@ html.theme-dark-preload body { background:#07111d; }
 
   <div class="toast-message" id="toastMessage">
 
-    Mensagem enviada com sucesso! 🚀
+    Mensagem preparada para o WhatsApp!
 
   </div>
 
@@ -6034,40 +6044,31 @@ html.theme-dark-preload body { background:#07111d; }
       );
 
 
-    form.addEventListener(
-      "submit",
-      function (event) {
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
 
-        event.preventDefault();
+      const nome = document.getElementById("nameInput").value.trim();
+      const email = document.getElementById("emailInput").value.trim();
+      const ddd = document.getElementById("dddInput").value.replace(/\D/g, "");
+      const telefone = document.getElementById("phoneInput").value.replace(/\D/g, "");
+      const servico = document.getElementById("serviceSelect").value.trim();
+      const mensagem = document.getElementById("messageInput").value.trim();
+      const texto = [
+        "Olá, LOAK! Gostaria de falar sobre um projeto.",
+        "",
+        "Nome: " + nome,
+        "E-mail: " + email,
+        "WhatsApp: (" + ddd + ") " + telefone,
+        "Serviço de interesse: " + servico,
+        "Mensagem: " + mensagem
+      ].join("\n");
 
-
-        form.reset();
-
-
-        toast.textContent =
-          currentLanguage === "pt"
-            ? "Mensagem enviada com sucesso! 🚀"
-            : "Message sent successfully! 🚀";
-
-
-        toast.classList.add(
-          "show"
-        );
-
-
-        setTimeout(
-          function () {
-
-            toast.classList.remove(
-              "show"
-            );
-
-          },
-          2800
-        );
-
-      }
-    );
+      // Abre o WhatsApp com a mensagem preenchida; o visitante confirma o envio.
+      const link = "https://wa.me/551934065624?text=" + encodeURIComponent(texto);
+      const novaAba = window.open(link, "_blank", "noopener,noreferrer");
+      if (!novaAba) window.location.href = link;
+    });
 
 
 
