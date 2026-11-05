@@ -3819,6 +3819,38 @@ img, svg, video, iframe { max-width: 100%; }
 }
 </style>
 
+
+<style>
+/* Ajustes mobile LOAK: tipografia, canvas e elementos de serviço */
+@media (max-width: 767.98px) {
+  .hero-description { font-size: 16px !important; line-height: 1.65 !important; }
+  .hero-index, .section-label { font-size: 12px !important; }
+  .hero-buttons .button-main, .hero-buttons .button-secondary {
+    font-size: 15px !important; min-height: 48px !important;
+  }
+  .section-description, .section-text, .section-center p,
+  .service-card p, .process-card p, .developer-card p,
+  .contact-card p, .plan-card p {
+    font-size: 15px !important; line-height: 1.65 !important;
+  }
+  .service-card h4, .process-card h4 { font-size: 21px !important; }
+  .form-control, input, textarea, select, label { font-size: 16px !important; }
+  .generative-shell {
+    position: relative; width: 100% !important;
+    height: 310px !important; min-height: 310px !important;
+    margin: 24px auto 0 !important; overflow: hidden !important;
+  }
+  .generative-canvas { inset: 0 !important; width: 100% !important; height: 100% !important; }
+  .gen-topline, .gen-caption { font-size: 9px !important; }
+  .gen-mode, .gen-instruction { font-size: 8px !important; }
+  .gen-caption { left: 12px; bottom: 12px; max-width: 48%; }
+  .gen-instruction { right: 12px; bottom: 12px; max-width: 42%; text-align: right; }
+}
+@media (max-width: 390px) {
+  .gen-mode { display: none !important; }
+  .hero h1 { font-size: 32px !important; }
+}
+</style>
 </head>
 
 
@@ -4013,53 +4045,6 @@ img, svg, video, iframe { max-width: 100%; }
 
 
   <!-- =========================================================
-     TECNOLOGIAS
-========================================================= -->
-
-  <section class="stack-section">
-
-    <div class="container">
-
-      <div class="stack-title" data-i18n="stackTitle">
-        Tecnologias & soluções
-      </div>
-
-
-      <div class="stack-items">
-
-        <span class="stack-item">
-          HTML5
-        </span>
-
-        <span class="stack-item">
-          CSS3
-        </span>
-
-        <span class="stack-item">
-          JavaScript
-        </span>
-
-        <span class="stack-item">
-          Bootstrap
-        </span>
-
-        <span class="stack-item">
-          MySQL
-        </span>
-
-        <span class="stack-item">
-          PHP
-        </span>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-
-  <!-- =========================================================
      SERVIÇOS
 ========================================================= -->
 
@@ -4095,7 +4080,7 @@ img, svg, video, iframe { max-width: 100%; }
 
         <div class="col-lg-4 col-md-6">
           <div class="service-card">
-            <div class="service-icon"><i class="lni lni-ruler-pencil"></i></div>
+            <div class="service-icon"><i class="lni lni-display"></i></div>
             <div class="service-number">01</div>
             <h4 data-i18n="service1Title">Websites</h4>
             <p data-i18n="service1Text">
@@ -4106,7 +4091,7 @@ img, svg, video, iframe { max-width: 100%; }
 
         <div class="col-lg-4 col-md-6">
           <div class="service-card">
-            <div class="service-icon"><i class="lni lni-code-alt"></i></div>
+            <div class="service-icon"><i class="lni lni-cog"></i></div>
             <div class="service-number">02</div>
             <h4 data-i18n="service2Title">Sistemas Web</h4>
             <p data-i18n="service2Text">
@@ -4117,7 +4102,7 @@ img, svg, video, iframe { max-width: 100%; }
 
         <div class="col-lg-4 col-md-6">
           <div class="service-card">
-            <div class="service-icon"><i class="lni lni-database"></i></div>
+            <div class="service-icon"><i class="lni lni-palette"></i></div>
             <div class="service-number">03</div>
             <h4 data-i18n="service3Title">Design</h4>
             <p data-i18n="service3Text">
@@ -6569,7 +6554,7 @@ img, svg, video, iframe { max-width: 100%; }
 
     // No celular, quando ninguém está tocando, um ponto invisível
     // percorre a logo bem devagar para ela continuar "viva".
-    if (coarsePointer && !touching && !reduceMotion) {
+    if (false && coarsePointer && !touching && !reduceMotion) {
       mouse.x = width * .5 + Math.cos(t * .62) * width * .28;
       mouse.y = height * .5 + Math.sin(t * .86) * height * .19;
       mouse.radius = Math.max(92, Math.min(width, height) * .24);
@@ -6577,10 +6562,10 @@ img, svg, video, iframe { max-width: 100%; }
 
     particles.forEach(function (p) {
       // Micro-ondulação permanente no mobile sem destruir a leitura de LOAK.
-      const ambientX = coarsePointer && !reduceMotion
+      const ambientX = false && coarsePointer && !reduceMotion
         ? Math.sin(t * 1.05 + p.wave) * 1.8
         : 0;
-      const ambientY = coarsePointer && !reduceMotion
+      const ambientY = false && coarsePointer && !reduceMotion
         ? Math.cos(t * .92 + p.wave) * 1.5
         : 0;
 
